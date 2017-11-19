@@ -3,11 +3,12 @@ function addLi(taskList, text) {
 	var newLi = taskList.append("<li></li>").find('li').last();
 	newLi.append("<span>" + text + "</span>");
 	newLi.append("&nbsp;");
-	newLi.append("<input type='button' id='clear' value='Удалить'></input>");
 	
-	$("#root").on('click', "#clear", function() {
-		$(this).parent('li').remove();
+	var newButton = $("<button class='clear'>").text("Удалить").click(function() {
+		$(this).parent().remove();
 	});
+	
+	newLi.append(newButton);
 }
 
 $(document).ready(function() {
